@@ -114,6 +114,28 @@ public class CharacterMovementController : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
         }
+
+        // Attack Animation Logic
+        if(Input.GetButton("Fire1"))
+        {
+            animator.SetBool("isAttacking", true);
+            animator.SetBool("isBlocking", false);
+        }
+        else 
+        {
+            animator.SetBool("isAttacking", false);
+        }
+        // Blocking Animation Logic
+        if (Input.GetButton("Fire2"))
+        {
+            animator.SetBool("isBlocking", true);
+            animator.SetBool("isAttacking", false);
+        }
+        else
+        {
+            animator.SetBool("isBlocking", false);
+        }
+
         #endregion
     }
 
@@ -140,7 +162,7 @@ public class CharacterMovementController : MonoBehaviour
 
     private void OnAnimatorIK()
     {
-        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-        animator.SetIKPosition(AvatarIKGoal.RightHand, targetTransform.position);
+        animator.SetLookAtWeight(1);
+        animator.SetLookAtPosition(targetTransform.position);
     }
 }
