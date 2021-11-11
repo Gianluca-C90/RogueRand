@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameEventListener : MonoBehaviour
+[System.Serializable]
+public class GameEventListener
 {
     [Tooltip("Event to register with.")]
     public GameEvent Event;
