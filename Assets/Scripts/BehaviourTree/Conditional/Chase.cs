@@ -20,8 +20,11 @@ public class Chase : Action
             transform.LookAt(player);
             if (inSight.Value == true)
             {
-                characterController.Move(destination * (speed * Time.deltaTime));
-                return TaskStatus.Success;
+                do
+                {
+                    characterController.Move(transform.forward * (speed * Time.deltaTime));
+                    return TaskStatus.Success;
+                } while (Vector3.Distance(player.position, transform.position) > 1);
             }
             else
                 return TaskStatus.Failure;
