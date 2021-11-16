@@ -22,11 +22,12 @@ public class WithinSight : Conditional
 
     // A cache of all of the possible targets
     private Transform possibleTarget;
+    private GameObject targets;
 
     public override void OnAwake()
     {
         // Cache all of the transforms that have a tag of targetTag
-        var targets = GameObject.FindGameObjectWithTag(targetTag);
+        targets = GameObject.FindGameObjectWithTag(targetTag);
         possibleTarget = targets.transform;
     }
 
@@ -81,9 +82,9 @@ public class WithinSight : Conditional
     public bool CheckForObstacles()
     {
         RaycastHit hitInfo;
-        Physics.Raycast(raycastOrigin.transform.position, possibleTarget.position, out hitInfo);
-        Debug.Log(hitInfo.collider.gameObject.tag);
-        if (hitInfo.collider.gameObject.CompareTag("Player"))
+        Physics.Linecast(raycastOrigin.transform.position , targets.transform.position, out hitInfo);
+        Debug.DrawLine(raycastOrigin.transform.position , targets.transform.position, Color.green);
+        if (hitInfo.collider.transform.gameObject.CompareTag("Player"))
             return true;
         else
             return false;
