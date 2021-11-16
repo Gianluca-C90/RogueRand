@@ -34,8 +34,5 @@ public class DebugGizmo : MonoBehaviour
         Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(angleVertical, transform.right) * transform.forward * radius);
         Gizmos.DrawRay(transform.position, Quaternion.AngleAxis(-angleVertical, transform.right) * transform.forward * radius);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, player.transform.position);
-
     }
 }

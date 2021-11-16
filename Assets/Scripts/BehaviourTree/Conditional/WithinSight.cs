@@ -17,6 +17,7 @@ public class WithinSight : Conditional
     public LayerMask playerLayerMask;
     // Set the target variable when a target has been found so the subsequent tasks know which object is the target
     public SharedTransform target;
+    public SharedBool inSight;
 
     public GameObject raycastOrigin;
 
@@ -44,22 +45,26 @@ public class WithinSight : Conditional
                 {
                 // Set the target so other tasks will know which transform is within sight
                 target.Value = possibleTarget;
+                inSight.Value = true;
                 return TaskStatus.Success;
                 }
 
                 else 
                 {
+                    inSight.Value = false;
                     return TaskStatus.Failure;
                 }
             }
 
             else
             {
+                inSight.Value = false;
                 return TaskStatus.Failure;
             }   
         }
         else
         {
+            inSight.Value = false;
             return TaskStatus.Failure;
         }
     }
@@ -81,12 +86,17 @@ public class WithinSight : Conditional
 
     public bool CheckForObstacles()
     {
+        bool canSee = false;
         RaycastHit hitInfo;
-        Physics.Linecast(raycastOrigin.transform.position , targets.transform.position, out hitInfo);
-        Debug.DrawLine(raycastOrigin.transform.position , targets.transform.position, Color.green);
-        if (hitInfo.collider.transform.gameObject.CompareTag("Player"))
-            return true;
-        else
-            return false;
+        Physics.Linecast(raycastOrigin.transform.position, possibleTarget.position + new Vector3(0, 1.4f, 0), out hitInfo);
+        Debug.DrawLine(raycastOrigin.transform.position, possibleTarget.position + new Vector3(0, 1.4f, 0), Color.green);
+        if (hitInfo.collider != null)
+        {
+            if (hitInfo.collider.transform.gameObject.CompareTag("Player"))
+                canSee = true;
+            else
+                canSee = false;
+        }
+        return canSee;
     }
 }
