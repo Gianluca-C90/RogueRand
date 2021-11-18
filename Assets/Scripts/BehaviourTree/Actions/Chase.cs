@@ -11,6 +11,7 @@ public class Chase : Action
     public float speed;
     public SharedTransform target;
     public SharedBool inSight;
+    public SharedBool atRange;
 
     public override void OnStart()
     {
@@ -31,9 +32,6 @@ public class Chase : Action
                 return TaskStatus.Failure;
         }
         else
-        {
             return TaskStatus.Failure;
-        }
-            
     }
 }
