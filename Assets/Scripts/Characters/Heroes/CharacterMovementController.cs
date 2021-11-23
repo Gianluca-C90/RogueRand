@@ -19,9 +19,10 @@ public class CharacterMovementController : MonoBehaviour
 
     Camera mainCamera;
     float xInput;
-    float speed = 3;
+    float speed = 0;
     Vector3 velocity;
     bool isGrounded;
+    bool isFalling;
 
 
     int FacingSide 
@@ -59,6 +60,8 @@ public class CharacterMovementController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            animator.SetBool("isJumping", true);
+            isFalling = true;
         }
 
         // Apply gravity
@@ -78,41 +81,24 @@ public class CharacterMovementController : MonoBehaviour
         #endregion
 
         #region ANIMATIONS
-        //Walking Animation Logic
+        //Walking & Runnning Animation Logic
         if (xInput != 0 && !Input.GetButton("Fire3"))
         {
             speed = walkingSpeed;
-            animator.SetBool("isWalking", true);
-            animator.SetBool("isRunning", false);
         }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
-
-        //Running Animation Logic
-        if (xInput != 0 && Input.GetButton("Fire3"))
+        else if (xInput != 0 && Input.GetButton("Fire3"))
         {
             speed = runningSpeed;
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isRunning", true);
-        }
-        else
+        } else
         {
-            speed = walkingSpeed;
-            animator.SetBool("isRunning", false);
+            speed = 0;
         }
 
         // Jumping Animation Logic
-        if (!isGrounded)
+        if (isFalling && isGrounded)
         {
-            animator.SetBool("isJumping", true);
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isRunning", false);
-        }
-        else 
-        {
-            animator.SetBool("isJumping", false);
+            animator.SetBool("isGrounded", true);
+            isFalling = false;
         }
 
         // Attack Animation Logic
@@ -135,6 +121,9 @@ public class CharacterMovementController : MonoBehaviour
         {
             animator.SetBool("isBlocking", false);
         }
+
+        animator.SetFloat("speed", speed);
+
 
         #endregion
     }
