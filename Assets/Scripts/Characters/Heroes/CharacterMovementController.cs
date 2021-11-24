@@ -78,6 +78,8 @@ public class CharacterMovementController : MonoBehaviour
         Quaternion rotateTo = Quaternion.Euler(new Vector3(0, 90 * Mathf.Sign(targetTransform.position.x - transform.position.x), 0));
         transform.rotation = Quaternion.Lerp(transform.rotation, rotateTo, 10 * Time.deltaTime);
 
+        animator.SetFloat("multiplier", (FacingSide * xInput));
+
         #endregion
 
         #region ANIMATIONS
@@ -91,6 +93,7 @@ public class CharacterMovementController : MonoBehaviour
             speed = runningSpeed;
         } else
         {
+            animator.SetFloat("multiplier", 1);
             speed = 0;
         }
 
@@ -104,26 +107,16 @@ public class CharacterMovementController : MonoBehaviour
         // Attack Animation Logic
         if(Input.GetButton("Fire1"))
         {
-            animator.SetBool("isAttacking", true);
-            animator.SetBool("isBlocking", false);
-        }
-        else 
-        {
-            animator.SetBool("isAttacking", false);
+            animator.SetTrigger("BasicAttack");
         }
         // Blocking Animation Logic
-        if (Input.GetButton("Fire2"))
+        else if (Input.GetButton("Fire2"))
         {
-            animator.SetBool("isBlocking", true);
-            animator.SetBool("isAttacking", false);
-        }
-        else
-        {
-            animator.SetBool("isBlocking", false);
+            animator.SetTrigger("isBlocking");
         }
 
         animator.SetFloat("speed", speed);
-
+        
 
         #endregion
     }
@@ -154,4 +147,5 @@ public class CharacterMovementController : MonoBehaviour
         animator.SetLookAtWeight(1);
         animator.SetLookAtPosition(targetTransform.position);
     }
+
 }

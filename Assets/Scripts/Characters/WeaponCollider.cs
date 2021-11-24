@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponCollider : MonoBehaviour
 {
     [SerializeField] GameEvent atkLanded;
+    [SerializeField] Collider weaponCollider;
 
     void OnTriggerEnter(Collider collision)
     {
@@ -14,5 +15,10 @@ public class WeaponCollider : MonoBehaviour
             atkLanded.Raise();
             Debug.Log("sei stato colpito!");
         }
+    }
+
+    public void DeactivateWeaponCollide()
+    {
+        weaponCollider.enabled = false;
     }
 }
