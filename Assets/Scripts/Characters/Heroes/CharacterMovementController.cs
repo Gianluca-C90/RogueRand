@@ -87,13 +87,16 @@ public class CharacterMovementController : MonoBehaviour
         if (xInput != 0 && !Input.GetButton("Fire3"))
         {
             speed = walkingSpeed;
+            ChangeTag("Player");
         }
         else if (xInput != 0 && Input.GetButton("Fire3"))
         {
             speed = runningSpeed;
+            ChangeTag("Player");
         } else
         {
             animator.SetFloat("multiplier", 1);
+            ChangeTag("Player");
             speed = 0;
         }
 
@@ -108,11 +111,13 @@ public class CharacterMovementController : MonoBehaviour
         if(Input.GetButton("Fire1"))
         {
             animator.SetTrigger("BasicAttack");
+            ChangeTag("Player");
         }
         // Blocking Animation Logic
         else if (Input.GetButton("Fire2"))
         {
             animator.SetTrigger("isBlocking");
+            ChangeTag("ShieldedPlayer");
         }
 
         animator.SetFloat("speed", speed);
@@ -148,4 +153,10 @@ public class CharacterMovementController : MonoBehaviour
         animator.SetLookAtPosition(targetTransform.position);
     }
 
+    void ChangeTag(string tag)
+    {
+        gameObject.tag = tag;
+    }
+
 }
+    

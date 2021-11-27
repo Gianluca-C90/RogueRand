@@ -8,14 +8,19 @@ using UnityEngine.AI;
 public class Chase : Action
 {
     public NavMeshAgent agent;
+    public SharedGameObject enemy;
     public float speed;
     public SharedTransform target;
     public SharedBool inSight;
     public SharedBool atRange;
 
+    Animator animator;
+
     public override void OnStart()
     {
         agent.speed = speed;
+        animator = enemy.Value.GetComponent<Animator>();
+        animator.SetFloat("speed", agent.speed);
     }
     public override TaskStatus OnUpdate()
     {

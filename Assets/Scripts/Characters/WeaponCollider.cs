@@ -13,7 +13,11 @@ public class WeaponCollider : MonoBehaviour
         {
             //Raise evento che ha colpito character
             atkLanded.Raise();
-            Debug.Log("sei stato colpito!");
+            Debug.Log("You've been Hit!");
+        }
+        else if (collision.gameObject.CompareTag("ShieldedPlayer"))
+        {
+            Debug.Log("Attack Blocked!");
         }
     }
 

@@ -17,6 +17,7 @@ public class Combat : Action
     {
         moveset.BuildWeightedListOfAttacks();
         StartCoroutine(Attack());
+        animator.SetFloat("speed", 0);
     }
 
     public override TaskStatus OnUpdate()
@@ -26,12 +27,12 @@ public class Combat : Action
 
     IEnumerator Attack()
     {
-        while (atRange.Value)
+        do
         {
             tempAtk = moveset.PickARandomAttack();
             float delay = tempAtk.atkRate;
             animator.SetTrigger("combo1");
             yield return new WaitForSeconds(delay);
-        }
+        } while (atRange.Value);
     }
 }

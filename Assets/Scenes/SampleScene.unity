@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &145029902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b2eebcb655535646a02aacec5d5e5d9, type: 3}
+  m_PrefabInstance: {fileID: 1622218533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &214767403
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +253,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Orb
       objectReference: {fileID: 0}
+    - target: {fileID: 5932612030910562074, guid: c9da1a4dba0f55f459f8eb181bb3d717, type: 3}
+      propertyPath: listenForTheseEvents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932612030910562074, guid: c9da1a4dba0f55f459f8eb181bb3d717, type: 3}
+      propertyPath: listenForTheseEvents.Array.data[0].Response.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5932612031329031386, guid: c9da1a4dba0f55f459f8eb181bb3d717, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -256,7 +269,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5932612030910562052, guid: c9da1a4dba0f55f459f8eb181bb3d717, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c9da1a4dba0f55f459f8eb181bb3d717, type: 3}
 --- !u!1001 &403632727
 PrefabInstance:
@@ -1093,9 +1107,9 @@ MonoBehaviour:
         State"},"ID":5,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"I''m
         dead"},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-157.037018,237.778061)"},"ID":6,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.ConditionalEvaluator","NodeData":{"Offset":"(-178.07666,223.205566)"},"ID":7,"Name":"Conditional
         Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"ConditionalconditionalTask":{"Type":"WithinRange","SingleattackRange":2.7,"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"StringtargetTag":"Player"},"BooleangraphLabel":true,"Children":[{"Type":"Combat","NodeData":{"Offset":"(-75.23608,219.6851)"},"ID":8,"Name":"Combat","Instant":true,"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false},"OffensiveSetmoveset":0,"Animatoranimator":1}]},{"Type":"BehaviorDesigner.Runtime.Tasks.ConditionalEvaluator","NodeData":{"Offset":"(219.999573,241.034546)"},"ID":9,"Name":"Conditional
-        Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"ConditionalconditionalTask":{"Type":"WithinSight","SinglehorizontalfieldOfViewAngle":60,"SingleverticalfieldOfViewAngle":85,"Singlerange":10,"StringtargetTag":"Player","LayerMaskplayerLayerMask":128,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"GameObjectraycastOrigin":2},"BooleangraphLabel":true,"Children":[{"Type":"Chase","NodeData":{"Offset":"(-13.8460751,149.230957)"},"ID":10,"Name":"Chase","Instant":true,"NavMeshAgentagent":3,"Singlespeed":6,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false}}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(590.917969,216.401825)"},"ID":11,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Wandering","NodeData":{"Offset":"(-77.2727356,127.27681)"},"ID":12,"Name":"Wandering","Instant":true,"NavMeshAgentagent":4,"Singlespeed":1,"Singleradius":15},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(166.363525,112.727264)","Comment":"Wandering
+        Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"ConditionalconditionalTask":{"Type":"WithinSight","SinglehorizontalfieldOfViewAngle":60,"SingleverticalfieldOfViewAngle":85,"Singlerange":10,"StringtargetTag":"Player","LayerMaskplayerLayerMask":128,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"GameObjectraycastOrigin":2},"BooleangraphLabel":true,"Children":[{"Type":"Chase","NodeData":{"Offset":"(-13.8460751,149.230957)"},"ID":10,"Name":"Chase","Instant":true,"NavMeshAgentagent":3,"SharedGameObjectenemy":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"EnemyReference","IsShared":true,"GameObjectmValue":4},"Singlespeed":6,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false}}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(590.917969,216.401825)"},"ID":11,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Wandering","NodeData":{"Offset":"(-77.2727356,127.27681)"},"ID":12,"Name":"Wandering","Instant":true,"NavMeshAgentagent":5,"SharedGameObjectenemy":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"EnemyReference","IsShared":true,"GameObjectmValue":6},"Singlespeed":1,"Singleradius":15},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(166.363525,112.727264)","Comment":"Wandering
         State\t\t"},"ID":13,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"I''m
-        Wandering"},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false}]}'
+        Wandering"},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"EnemyReference","IsShared":true,"GameObjectmValue":7}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -1106,7 +1120,10 @@ MonoBehaviour:
         - {fileID: 1532238716}
         - {fileID: 1511519241}
         - {fileID: 690494361}
+        - {fileID: 145029902}
         - {fileID: 690494361}
+        - {fileID: 145029902}
+        - {fileID: 145029902}
         byteData: 
         byteDataArray: 
       Version: 1.7.1

@@ -92,7 +92,7 @@ public class WithinSight : Conditional
         Debug.DrawLine(raycastOrigin.transform.position, possibleTarget.position + new Vector3(0, 1.4f, 0), Color.green);
         if (hitInfo.collider != null)
         {
-            if (hitInfo.collider.transform.gameObject.CompareTag("Player"))
+            if (hitInfo.collider.transform.gameObject.layer == 7)
                 canSee = true;
             else
                 canSee = false;
