@@ -16,9 +16,11 @@ public class Chase : Action
 
     Animator animator;
 
+
     public override void OnStart()
     {
         agent.speed = speed;
+        float distance = Vector3.Distance(target.Value.position, transform.position);
         animator = enemy.Value.GetComponent<Animator>();
         animator.SetFloat("speed", agent.speed);
     }
@@ -39,4 +41,5 @@ public class Chase : Action
         else
             return TaskStatus.Failure;
     }
+
 }

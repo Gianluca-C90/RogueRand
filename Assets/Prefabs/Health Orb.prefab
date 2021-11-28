@@ -233,7 +233,6 @@ GameObject:
   - component: {fileID: 5932612030910562054}
   - component: {fileID: 5932612030910562053}
   - component: {fileID: 5932612030910562075}
-  - component: {fileID: 5932612030910562052}
   - component: {fileID: 5932612030910562074}
   m_Layer: 5
   m_Name: Health Orb
@@ -327,19 +326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 5932612030910562053}
---- !u!114 &5932612030910562052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5932612030910562055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e196cd3f8ba8bc418161fdb5d177a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 5932612030910562053}
 --- !u!114 &5932612030910562074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +343,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5932612030910562052}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: DamageReceiver, Assembly-CSharp
           m_MethodName: DamagedReceived
           m_Mode: 4

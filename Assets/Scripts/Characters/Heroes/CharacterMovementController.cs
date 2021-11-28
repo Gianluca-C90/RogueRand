@@ -108,8 +108,9 @@ public class CharacterMovementController : MonoBehaviour
         }
 
         // Attack Animation Logic
-        if(Input.GetButton("Fire1"))
+        if(Input.GetButtonDown("Fire1"))
         {
+            
             animator.SetTrigger("BasicAttack");
             ChangeTag("Player");
         }
