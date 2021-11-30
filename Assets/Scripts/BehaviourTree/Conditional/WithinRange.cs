@@ -9,6 +9,7 @@ public class WithinRange : Conditional
     public float attackRange;
     public SharedBool atRange;
     public SharedBool inSight;
+    public SharedBool isDead;
 
     public string targetTag;
     private Transform player;
@@ -25,7 +26,7 @@ public class WithinRange : Conditional
 
         float distanceToTarget = Vector3.Distance(transform.position, player.position);
 
-        if (distanceToTarget <= attackRange && inSight.Value)
+        if (distanceToTarget <= attackRange && inSight.Value && !isDead.Value)
         {
             transform.LookAt(player.position);
             atRange.Value = true;

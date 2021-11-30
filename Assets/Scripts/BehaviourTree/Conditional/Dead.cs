@@ -18,6 +18,7 @@ public class Dead : Conditional
         if (isDead.Value)
         {
             isDead.Value = true;
+            StopAllCoroutines();
             return TaskStatus.Success;
         }
         else

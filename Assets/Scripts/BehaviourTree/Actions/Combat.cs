@@ -19,8 +19,8 @@ public class Combat : Action
 
     public override void OnStart()
     {
-        moveset.BuildWeightedListOfAttacks();
         StopAllCoroutines();
+        moveset.BuildWeightedListOfAttacks();
         StartCoroutine(Attack());
     }
 
