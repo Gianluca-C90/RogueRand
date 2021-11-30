@@ -2,12 +2,11 @@ using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using System;
-
+using UnityEngine.Events;
 
 public class Dead : Conditional
 {
-    //Reference alla vita
-    public float health;
+    public SharedBool isDead;
 
     public override void OnAwake()
     {
@@ -16,7 +15,7 @@ public class Dead : Conditional
 
     public override TaskStatus OnUpdate()
     {
-        if (health <= 0)
+        if (isDead.Value)
         {
             return TaskStatus.Success;
         }
@@ -24,5 +23,10 @@ public class Dead : Conditional
         {
             return TaskStatus.Failure;
         }
+    }
+
+    public void Death()
+    {
+        isDead = true;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMovementController : MonoBehaviour
 {
-
+    [SerializeField] Collider heroWeaponCollider;
     [SerializeField] CharacterController characterController;
     [SerializeField] Animator animator;
     [SerializeField] Transform groundChecker;
@@ -112,6 +112,7 @@ public class CharacterMovementController : MonoBehaviour
         {
             
             animator.SetTrigger("BasicAttack");
+            heroWeaponCollider.enabled = true;
             ChangeTag("Player");
         }
         // Blocking Animation Logic

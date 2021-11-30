@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 690494360}
   m_Layer: 0
   m_Name: TeknoVikingo
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -567,11 +567,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 690494356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e1fd62326892246a4226af6135333d, type: 3}
+  m_Script: {fileID: 11500000, guid: adf52272d97e2a84198b79803cc90459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
   death: {fileID: 11400000, guid: 75a7d13cf14e5dc43a003e68e387c3c7, type: 2}
+  agent: {fileID: 690494361}
+  anim: {fileID: 1532238716}
+  tree: {fileID: 1511519247}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,7 +852,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 690494363}
-          m_TargetAssemblyTypeName: Health, Assembly-CSharp
+          m_TargetAssemblyTypeName: EnemyHealth, Assembly-CSharp
           m_MethodName: HealthChanges
           m_Mode: 3
           m_Arguments:
@@ -1211,13 +1214,11 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(536.9562,-540.545654)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(14.8133068,110.707489)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-150.015869,84.56102)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-952.1601,281.187134)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Dead","NodeData":{"Offset":"(-48.5080338,115.071449)"},"ID":4,"Name":"Dead","Instant":true,"Singlehealth":100},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(140,110)","Comment":"Dead
-        State"},"ID":5,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"I''m
-        dead"},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-157.037018,237.778061)"},"ID":6,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.ConditionalEvaluator","NodeData":{"Offset":"(-178.07666,223.205566)"},"ID":7,"Name":"Conditional
-        Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"ConditionalconditionalTask":{"Type":"WithinRange","SingleattackRange":3,"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"StringtargetTag":"Player"},"BooleangraphLabel":true,"Children":[{"Type":"Combat","NodeData":{"Offset":"(-75.23608,219.6851)"},"ID":8,"Name":"Combat","Instant":true,"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false},"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"OffensiveSetmoveset":0,"Animatoranimator":1,"NavMeshAgentagent":2,"ColliderweaponCollider":3}]},{"Type":"BehaviorDesigner.Runtime.Tasks.ConditionalEvaluator","NodeData":{"Offset":"(219.999573,241.034546)"},"ID":9,"Name":"Conditional
-        Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"ConditionalconditionalTask":{"Type":"WithinSight","SinglehorizontalfieldOfViewAngle":60,"SingleverticalfieldOfViewAngle":85,"Singlerange":10,"StringtargetTag":"Player","LayerMaskplayerLayerMask":128,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"GameObjectraycastOrigin":4},"BooleangraphLabel":true,"Children":[{"Type":"Chase","NodeData":{"Offset":"(-13.8460751,149.230957)"},"ID":10,"Name":"Chase","Instant":true,"NavMeshAgentagent":5,"SharedGameObjectenemy":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"EnemyReference","IsShared":true,"GameObjectmValue":6},"Singlespeed":6,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false}}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(590.917969,216.401825)"},"ID":11,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Wandering","NodeData":{"Offset":"(-77.2727356,127.27681)"},"ID":12,"Name":"Wandering","Instant":true,"NavMeshAgentagent":7,"SharedGameObjectenemy":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"EnemyReference","IsShared":true,"GameObjectmValue":8},"Singlespeed":1,"Singleradius":15},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(166.363525,112.727264)","Comment":"Wandering
-        State\t\t"},"ID":13,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"I''m
-        Wandering"},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"EnemyReference","IsShared":true,"GameObjectmValue":9}]}'
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(536.9562,-540.545654)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(14.8133068,110.707489)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-150.015869,84.56102)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Dead","NodeData":{"Offset":"(-1000,400)"},"ID":3,"Name":"Dead","Instant":true,"SharedBoolisDead":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"isDead","IsShared":true,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-157.037018,237.778061)"},"ID":4,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.ConditionalEvaluator","NodeData":{"Offset":"(-178.07666,223.205566)"},"ID":5,"Name":"Conditional
+        Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"ConditionalconditionalTask":{"Type":"WithinRange","SingleattackRange":3,"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"StringtargetTag":"Player"},"BooleangraphLabel":true,"Children":[{"Type":"Combat","NodeData":{"Offset":"(-75.23608,219.6851)"},"ID":6,"Name":"Combat","Instant":true,"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false},"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"OffensiveSetmoveset":0,"Animatoranimator":1,"NavMeshAgentagent":2,"ColliderweaponCollider":3}]},{"Type":"BehaviorDesigner.Runtime.Tasks.ConditionalEvaluator","NodeData":{"Offset":"(219.999573,241.034546)"},"ID":7,"Name":"Conditional
+        Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"ConditionalconditionalTask":{"Type":"WithinSight","SinglehorizontalfieldOfViewAngle":60,"SingleverticalfieldOfViewAngle":85,"Singlerange":10,"StringtargetTag":"Player","LayerMaskplayerLayerMask":128,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"GameObjectraycastOrigin":4},"BooleangraphLabel":true,"Children":[{"Type":"Chase","NodeData":{"Offset":"(-13.8460751,149.230957)"},"ID":8,"Name":"Chase","Instant":true,"NavMeshAgentagent":5,"SharedGameObjectenemy":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"EnemyReference","IsShared":true,"GameObjectmValue":6},"Singlespeed":6,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"SharedBoolinSight":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},"SharedBoolatRange":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false}}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(590.917969,216.401825)"},"ID":9,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Wandering","NodeData":{"Offset":"(-77.2727356,127.27681)"},"ID":10,"Name":"Wandering","Instant":true,"NavMeshAgentagent":7,"SharedGameObjectenemy":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"EnemyReference","IsShared":true,"GameObjectmValue":8},"Singlespeed":1,"Singleradius":15},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(166.363525,112.727264)","Comment":"Wandering
+        State\t\t"},"ID":11,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"I''m
+        Wandering"},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"inSight","IsShared":true,"BooleanmValue":false},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"atRange","IsShared":true,"BooleanmValue":false},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"EnemyReference","IsShared":true,"GameObjectmValue":9},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"isDead","IsShared":true,"BooleanmValue":false}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -1595,7 +1596,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2121906770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d124735e11429de4b8ce8a27cc03d3c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b1f45f950b4f374b93e7cbb8ca9f889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   atkLanded: {fileID: 11400000, guid: ab31b38ccba5b0744aa71fb5a70ad172, type: 2}
@@ -2183,6 +2184,10 @@ PrefabInstance:
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 1308290835}
+    - target: {fileID: 8896145942710930977, guid: cf01e98c29f68d448991a9af822a16d9, type: 3}
+      propertyPath: heroWeaponCollider
+      value: 
+      objectReference: {fileID: 2121906772}
     - target: {fileID: 8963357358550762311, guid: cf01e98c29f68d448991a9af822a16d9, type: 3}
       propertyPath: m_Layer
       value: 7

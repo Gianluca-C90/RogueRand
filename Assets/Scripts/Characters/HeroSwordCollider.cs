@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponCollider : MonoBehaviour
+public class HeroSwordCollider : MonoBehaviour
 {
     [SerializeField] GameEvent atkLanded;
     [SerializeField] Collider weaponCollider;
@@ -11,16 +11,12 @@ public class WeaponCollider : MonoBehaviour
     {
         if (collision != null)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("Enemy"))
             {
                 //Raise evento che ha colpito character
                 atkLanded.Raise();
                 weaponCollider.enabled = false;
-                Debug.Log("You've been Hit!");
-            }
-            else if (collision.gameObject.CompareTag("ShieldedPlayer"))
-            {
-                Debug.Log("Attack Blocked!");
+                Debug.Log("Enemy have been Hit!");
             }
         }
     }
