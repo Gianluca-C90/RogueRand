@@ -17,16 +17,12 @@ public class Dead : Conditional
     {
         if (isDead.Value)
         {
+            isDead.Value = true;
             return TaskStatus.Success;
         }
         else
         {
             return TaskStatus.Failure;
         }
-    }
-
-    public void Death()
-    {
-        isDead = true;
     }
 }
