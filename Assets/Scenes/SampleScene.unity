@@ -231,7 +231,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5932612030910562053, guid: c9da1a4dba0f55f459f8eb181bb3d717, type: 3}
       propertyPath: m_Value
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5932612030910562054, guid: c9da1a4dba0f55f459f8eb181bb3d717, type: 3}
       propertyPath: m_Pivot.x
@@ -812,7 +812,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d814072cc1b1ee4a90e1dce2513de83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenForTheseEvents: []
+  listenForTheseEvents:
+  - Event: {fileID: 11400000, guid: 373654f173cd9044c8a5f3032110f8d7, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1412164013}
+          m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+          m_MethodName: HealthChange
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: -0.1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1153972683}
+          m_TargetAssemblyTypeName: Health, Assembly-CSharp
+          m_MethodName: HealthChanges
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: -1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!195 &690494361
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -826,7 +854,7 @@ NavMeshAgent:
   m_Speed: 1
   m_Acceleration: 100
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 1000000
   m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1192,7 +1220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e1fd62326892246a4226af6135333d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 10
   death: {fileID: 11400000, guid: dbdf96c3749043e4ab898fbaf16b3ed2, type: 2}
 --- !u!114 &1153972684
 MonoBehaviour:
@@ -1545,6 +1573,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9007143062819938513, guid: cf01e98c29f68d448991a9af822a16d9, type: 3}
   m_PrefabInstance: {fileID: 8896145942427352532}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1412164013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5932612030910562075, guid: c9da1a4dba0f55f459f8eb181bb3d717, type: 3}
+  m_PrefabInstance: {fileID: 356539088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfcbe4245b96324d853e3965c8d2b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1423221066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,8 +1907,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.1
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!4 &1532238715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3b2eebcb655535646a02aacec5d5e5d9, type: 3}

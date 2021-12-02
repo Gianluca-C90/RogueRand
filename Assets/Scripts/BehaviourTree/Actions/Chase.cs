@@ -32,6 +32,7 @@ public class Chase : Action
             transform.LookAt(player);
             if (inSight.Value == true)
             {
+                transform.LookAt(player.transform);
                 agent.SetDestination(player.position);
                 return TaskStatus.Success;
             }

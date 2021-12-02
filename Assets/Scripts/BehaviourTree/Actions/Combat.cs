@@ -34,6 +34,7 @@ public class Combat : Action
         animator.SetFloat("speed", 0);
         do
         {
+            
             tempAtk = moveset.PickARandomAttack();
             float delay = tempAtk.atkRate;
             weaponCollider.enabled = true;
