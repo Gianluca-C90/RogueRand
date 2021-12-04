@@ -12,14 +12,15 @@ public class EnemyHealth : MonoBehaviour
     public NavMeshAgent agent;
     public Animator anim;
     public BehaviorTree tree;
+    public ObjectToSpawn droppables;
 
+    bool isDead;
     public void HealthChanges(int amount)
     {
         health += amount;
 
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
-            death.Raise();
             Death();
             Debug.Log(gameObject.name + " is Dead!");
         }
@@ -27,6 +28,8 @@ public class EnemyHealth : MonoBehaviour
 
     void Death()
     {
+        isDead = true;
+        droppables.DropRandomReward(transform.position);
         anim.SetBool("isDead", true);
 
         var isDeadBool = (SharedBool)tree.GetVariable("isDead");

@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
                     break;
             }
             inventory.AddItem(item.item, 1);
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }
