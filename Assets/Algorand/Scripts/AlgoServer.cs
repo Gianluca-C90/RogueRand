@@ -2,6 +2,7 @@ using AlgoSdk;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 /// <summary>
 /// Enum to manage different wallet types
@@ -15,10 +16,12 @@ enum WalletType
 
 public class AlgoServer : MonoBehaviour
 {
+    public static AlgoServer instance;
+
     #region DllImport
 
     [DllImport("__Internal")]
-    private static extern void Hello();
+    public static extern void Hello();
 
     [DllImport("__Internal")]
     private static extern string ConnectMyAlgo();
@@ -41,10 +44,21 @@ public class AlgoServer : MonoBehaviour
     string clientAddr;
     WalletType type;
     bool holdASA;
+    const ulong TOKENID = 47482804;
+
+    public bool connected;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Start()
@@ -62,7 +76,7 @@ public class AlgoServer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            var uniTaskVoid = checkASA(47482804);
+            HarvestASA(new List<ulong> { TOKENID }, new List<ulong> { 1 });
         }
     }
 
@@ -70,12 +84,17 @@ public class AlgoServer : MonoBehaviour
     {
         ConnectAlgoSign();
         type = WalletType.ALGOSIGNER;
+        connected = true;
+        //Debug.Log(type + " " + connected);
     }
 
     public void GetConnMyAlgo()
     {
         ConnectMyAlgo();
         type = WalletType.MYALGOWALLET;
+        connected = true;
+        //Debug.Log(type + " " + connected);
+
     }
 
     public void GetAddr(string rec)
@@ -83,20 +102,39 @@ public class AlgoServer : MonoBehaviour
         clientAddr = rec;
     }
 
-    public void SendASA()
+    public async void HarvestASA(List<ulong> ids, List<ulong> amounts)
     {
-        var privateKey = Mnemonic
-            .FromString("shoe globe wild feed friend level citizen hotel person scrub riot van lottery degree wild math demand guide meat rug capable bamboo fiber absorb elephant")
-            .ToPrivateKey();
-        UniTaskVoid uniTaskVoid = SendAsset(privateKey, clientAddr, 47482804, 1);
+
+        for (int i = 0; i < ids.Count; i++)
+        {
+            bool keep = await checkASA(ids[i]);
+
+            if (!keep)
+            {
+                Optin(type, clientAddr, ids[i].ToString(), "");
+            }
+            else
+            {
+                UniTaskVoid uniTaskVoid = SendAsset(clientAddr, ids[i], amounts[i]);
+            }
+        }
+
+
     }
 
-    public async UniTaskVoid MakePayment(PrivateKey privateKey, Address receiver, ulong amount)
+    public void SendASA()
+    {
+        UniTaskVoid uniTaskVoid = SendAsset(clientAddr, TOKENID, 1);
+    }
+
+    private async UniTaskVoid MakePayment(Address receiver, ulong amount)
     {
         // Get the secret key handle and the public key of the sender account.
         // We'll use the secret key handle to sign the transaction.
         // The public key will be used as the sender's Address.
-        using var keyPair = privateKey.ToKeyPair();
+        using var keyPair = Mnemonic
+            .FromString("shoe globe wild feed friend level citizen hotel person scrub riot van lottery degree wild math demand guide meat rug capable bamboo fiber absorb elephant")
+            .ToPrivateKey().ToKeyPair();
 
         // Get the suggested transaction params
         var (txnParamsError, txnParams) = await algod.GetSuggestedParams();
@@ -142,12 +180,14 @@ public class AlgoServer : MonoBehaviour
         Debug.Log($"Successfully made payment! Confirmed on round {pending.ConfirmedRound}");
     }
 
-    public async UniTaskVoid CreateAsset(PrivateKey privateKey, Address receiver, ulong amount)
+    private async UniTaskVoid CreateAsset(Address receiver, ulong amount)
     {
         // Get the secret key handle and the public key of the sender account.
         // We'll use the secret key handle to sign the transaction.
         // The public key will be used as the sender's Address.
-        using var keyPair = privateKey.ToKeyPair();
+        using var keyPair = Mnemonic
+            .FromString("shoe globe wild feed friend level citizen hotel person scrub riot van lottery degree wild math demand guide meat rug capable bamboo fiber absorb elephant")
+            .ToPrivateKey().ToKeyPair();
 
         // Get the suggested transaction params
         var (txnParamsError, txnParams) = await algod.GetSuggestedParams();
@@ -199,12 +239,14 @@ public class AlgoServer : MonoBehaviour
         Debug.Log($"Successfully created asset! Confirmed on round {pending.ConfirmedRound}");
     }
 
-    public async UniTaskVoid SendAsset(PrivateKey privateKey, Address receiver, ulong xferAsset, ulong amount)
+    public async UniTaskVoid SendAsset(Address receiver, ulong xferAsset, ulong amount)
     {
         // Get the secret key handle and the public key of the sender account.
         // We'll use the secret key handle to sign the transaction.
         // The public key will be used as the sender's Address.
-        using var keyPair = privateKey.ToKeyPair();
+        using var keyPair = Mnemonic
+            .FromString("shoe globe wild feed friend level citizen hotel person scrub riot van lottery degree wild math demand guide meat rug capable bamboo fiber absorb elephant")
+            .ToPrivateKey().ToKeyPair();
 
         // Get the suggested transaction params
         var (txnParamsError, txnParams) = await algod.GetSuggestedParams();
@@ -258,6 +300,8 @@ public class AlgoServer : MonoBehaviour
         Debug.Log($"Successfully sent asset! Confirmed on round {pending.ConfirmedRound}");
     }
 
+
+
     public async UniTaskVoid CheckAlgodStatus()
     {
         var response = await algod.GetHealth();
@@ -285,9 +329,9 @@ public class AlgoServer : MonoBehaviour
         }
     }
 
-    private async UniTaskVoid checkASA(ulong asset_id)
+    public async UniTask<bool> checkASA(ulong asset_id)
     {
-        var (error, accountInfo) = await algod.GetAccountInformation(clientAddr);
+        var (error, accountInfo) = await algod.GetAccountInformation("HIEF2R3JQGNPGOMMUC6ZGLYGUBXVY2KBFGF5DOLTBMXLOC2FAIAM6666FY");
         if (error.IsError)
         {
             Debug.LogError(error.Message);
@@ -303,12 +347,10 @@ public class AlgoServer : MonoBehaviour
                 {
                     holdASA = true;
                     Debug.Log($"Asset with ID={asset_id} already registred");
-                    SendASA();
-                    return;
+                    return true;
                 }
             }
-            Optin(type, clientAddr, asset_id.ToString(), "");
-
         }
+        return false;
     }
 }

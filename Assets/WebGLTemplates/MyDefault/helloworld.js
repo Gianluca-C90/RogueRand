@@ -1,6 +1,6 @@
 function helloworldbitch()
 {
-    window.alert("Hello World");
+    window.alert("CONNECT YOUR WALLET TO START GAME");
 }
 
 //#region MyAlgoWallet
@@ -49,7 +49,7 @@ async function makeTxn_MyA(sender, receiver, amount, note)
     }
 }
 
-async function optinASA_MyA( asaID, sender, note)
+async function optinASA_MyA(asaID, sender, note)
 {
     try {
         const algodClient = new algosdk.Algodv2("", 'https://api.testnet.algoexplorer.io', '');
@@ -74,7 +74,7 @@ async function optinASA_MyA( asaID, sender, note)
         console.error(err);
     }
 }
-
+/*
 async function sendASA_MyA(sender, receiver, asaID, amount, note)
 {
     try {
@@ -98,7 +98,7 @@ async function sendASA_MyA(sender, receiver, asaID, amount, note)
     } catch (error) {
         console.error(err);
     }
-}
+}*/
 
 //#endregion
 

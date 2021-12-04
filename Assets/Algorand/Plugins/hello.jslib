@@ -6,7 +6,7 @@ var myLibrary = {
 
     ConnectMyAlgo: function()
     {
-        return connectToMyAlgo();
+        connectToMyAlgo();
     },
 
     ConnectAlgoSign: function()
@@ -52,7 +52,7 @@ var myLibrary = {
         };
         
     },
-
+/*
     AsaTxn: function(sender, receiver, asa, amount, note)
     {
         var s = Pointer_stringify(sender);
@@ -71,7 +71,7 @@ var myLibrary = {
             case 2:
                 //TODO: Aggiungere AlgoWalletOfficial
         };
-    }
+    }*/
 };
 
 mergeInto(LibraryManager.library, myLibrary)

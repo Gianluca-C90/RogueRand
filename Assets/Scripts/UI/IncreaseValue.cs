@@ -20,4 +20,9 @@ public class IncreaseValue : MonoBehaviour
         text.text = $"x {tot}";
     }
 
+    public int GetTot()
+    {
+        return tot;
+    }
+
 }

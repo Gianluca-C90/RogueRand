@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
     void Death()
     {
         Animator anim = GetComponent<Animator>();
-        
+
         anim.SetBool("isDead", true);
 
         Destroy(GetComponent<CharacterController>());

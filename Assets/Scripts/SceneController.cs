@@ -7,6 +7,10 @@ public class SceneController : MonoBehaviour
 {
     public void LoadScene(int index)
     {
-        SceneManager.LoadScene(index);
+        Debug.Log(AlgoServer.instance.connected);
+        if (AlgoServer.instance.connected)
+            SceneManager.LoadScene(index);
+        else
+            AlgoServer.Hello();
     }
 }

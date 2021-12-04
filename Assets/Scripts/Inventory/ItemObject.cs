@@ -13,4 +13,5 @@ public class ItemObject : ScriptableObject
 {
     public ItemType type;
     public GameObject prefab;
+    public ulong id;
 }
