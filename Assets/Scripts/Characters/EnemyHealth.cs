@@ -14,6 +14,8 @@ public class EnemyHealth : MonoBehaviour
     public BehaviorTree tree;
     public ObjectToSpawn droppables;
 
+    public Collider collider;
+
     bool isDead;
     public void HealthChanges(int amount)
     {
@@ -29,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
     void Death()
     {
         isDead = true;
-        droppables.DropRandomReward(transform.position);
+
         anim.SetBool("isDead", true);
 
         var isDeadBool = (SharedBool)tree.GetVariable("isDead");
@@ -37,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
         Rigidbody rigid = gameObject.GetComponent<Rigidbody>();
         rigid.isKinematic = true;
         Destroy(agent, 1);
+        droppables.DropRandomReward(transform.position);
         Destroy(gameObject, 10);
     }
 }

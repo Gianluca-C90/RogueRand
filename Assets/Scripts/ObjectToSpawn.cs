@@ -19,8 +19,7 @@ public class ObjectToSpawn : MonoBehaviour
     public void DropRandomReward(Vector3 position)
     {
         GameObject pickedObject = RandomPicker();
-        pickedObject.transform.position = Vector3.zero;
-        pickedObject.transform.position = position;
+        pickedObject.transform.localPosition = position + offset;
         pickedObject.SetActive(true);
     }
 
@@ -28,6 +27,10 @@ public class ObjectToSpawn : MonoBehaviour
     {
         int count = spawnableObjects.Count;
         int picked = UnityEngine.Random.Range(0, count);
+        if (!spawnableObjects[picked].activeSelf)
+            return spawnableObjects[picked];
+        else
+            RandomPicker();
         return spawnableObjects[picked];
     }
 }
