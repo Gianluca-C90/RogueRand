@@ -14,8 +14,6 @@ public class EnemyHealth : MonoBehaviour
     public BehaviorTree tree;
     public ObjectToSpawn droppables;
 
-    public Collider collider;
-
     bool isDead;
     public void HealthChanges(int amount)
     {
