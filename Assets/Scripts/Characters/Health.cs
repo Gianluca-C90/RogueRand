@@ -7,11 +7,13 @@ public class Health : MonoBehaviour
     public float health;
     public GameEvent death;
 
+    bool isDead;
+
     public void HealthChanges(int amount)
     {
         health += amount;
 
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
             death.Raise();
             Death();
@@ -21,6 +23,7 @@ public class Health : MonoBehaviour
 
     void Death()
     {
+        isDead = true;
         Animator anim = GetComponent<Animator>();
 
         anim.SetBool("isDead", true);
