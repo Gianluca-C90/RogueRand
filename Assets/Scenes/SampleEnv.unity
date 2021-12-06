@@ -5599,13 +5599,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417465766}
-  m_LocalRotation: {x: -0.2535047, y: 0, z: 0, w: 0.9673342}
-  m_LocalPosition: {x: 0, y: -0.342, z: -0.51}
+  m_LocalRotation: {x: -0.5084403, y: 0, z: 0, w: 0.8610973}
+  m_LocalPosition: {x: 0, y: -0.7, z: -0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1808881225}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -29.37, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -61.12, y: 0, z: 0}
 --- !u!108 &417465768
 Light:
   m_ObjectHideFlags: 0
@@ -5619,7 +5619,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 12
-  m_Range: 0.8
+  m_Range: 1.37
   m_SpotAngle: 77.4
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -8213,13 +8213,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623634214}
-  m_LocalRotation: {x: -0.2461532, y: 0, z: 0, w: 0.96923095}
-  m_LocalPosition: {x: 0, y: -0.423, z: -0.468}
+  m_LocalRotation: {x: -0.5589759, y: 0, z: 0, w: 0.8291839}
+  m_LocalPosition: {x: 0, y: -0.8, z: -0.383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 487080273}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -28.5, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -67.97, y: 0, z: 0}
 --- !u!108 &623634216
 Light:
   m_ObjectHideFlags: 0
@@ -8233,8 +8233,8 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 14.7
-  m_Range: 0.81
-  m_SpotAngle: 77.4
+  m_Range: 1.55
+  m_SpotAngle: 89.43
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -9589,8 +9589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 8.800837, y: 3, z: 4}
-  m_Center: {x: -1.8847473, y: 1.47, z: 0}
+  m_Size: {x: 8.800837, y: 2.854427, z: 4}
+  m_Center: {x: -1.8847475, y: 1.5427865, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!114 &761905369
@@ -13027,17 +13027,17 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.026461707, g: 0.9735383, b: 0.65098864, a: 0}
-        key1: {r: 1, g: 0, b: 0.9345741, a: 0.54901963}
-        key2: {r: 1, g: 0, b: 0.061771393, a: 0.98141104}
+        key0: {r: 0.25207186, g: 0, b: 1, a: 0}
+        key1: {r: 0.02646172, g: 0.9735383, b: 0.65098864, a: 0.54901963}
+        key2: {r: 0.8300586, g: 0, b: 1, a: 0.98141104}
         key3: {r: 1, g: 0, b: 0.061771393, a: 0.4757858}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 28913
-        ctime1: 65535
-        ctime2: 65535
+        ctime0: 8096
+        ctime1: 18311
+        ctime2: 62644
         ctime3: 65535
         ctime4: 0
         ctime5: 0
@@ -13052,7 +13052,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 5
       minGradient:
         serializedVersion: 2
@@ -22276,8 +22276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 13.089455, y: 1.04, z: 4}
-  m_Center: {x: -5.8797274, y: 0.54999995, z: 0}
+  m_Size: {x: 13.089455, y: 0.9655548, z: 4}
+  m_Center: {x: -5.8797274, y: 0.5872225, z: 0}
   m_Area: 1
   m_AffectedAgents: 00000000
 --- !u!114 &1464679137
@@ -27085,8 +27085,8 @@ PrefabInstance:
         This is a high risk high reward play to earn game, but for
         now you will experience just a showcase of the basic game mechanics, in the
         near future it will have much more layers of complexity and features, such
-        as : several playable characters,e income by lending NFTs or staking tokens,
-        crafting etc. etc.'
+        as : several playable characters,passive income by lending NFTs or staking
+        tokens, crafting etc. etc.'
       objectReference: {fileID: 0}
     - target: {fileID: 1779159363, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
       propertyPath: m_fontSize
