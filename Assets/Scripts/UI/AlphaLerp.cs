@@ -7,6 +7,12 @@ public class AlphaLerp : MonoBehaviour
     public CanvasGroup canvas;
     float t = 0.0f;
     // Update is called once per frame
+
+    private void Start()
+    {
+        canvas.interactable = true;
+    }
+
     void Update()
     {
         if (canvas.alpha < 1)
