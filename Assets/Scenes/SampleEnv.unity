@@ -2792,6 +2792,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd16ebcfaa074ec38a55956aa3d5438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &234466602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 234466603}
+  - component: {fileID: 234466604}
+  m_Layer: 0
+  m_Name: light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &234466603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234466602}
+  m_LocalRotation: {x: -0.34709927, y: -0, z: -0, w: 0.9378284}
+  m_LocalPosition: {x: 1.1699998, y: 1.3300002, z: -0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1633645171}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -40.62, y: 0, z: 0}
+--- !u!108 &234466604
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234466602}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2.57
+  m_Range: 10
+  m_SpotAngle: 63.2
+  m_InnerSpotAngle: 14.1
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &237324790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3131,6 +3224,99 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c8dbbd17831aecb419cf9f688e85e672, type: 3}
   m_PrefabInstance: {fileID: 1358405926}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &261349354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 261349355}
+  - component: {fileID: 261349356}
+  m_Layer: 0
+  m_Name: light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &261349355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261349354}
+  m_LocalRotation: {x: -0.34709927, y: -0, z: -0, w: 0.9378284}
+  m_LocalPosition: {x: 1.1699998, y: -1.383, z: -2.086}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1655703481}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -40.62, y: 0, z: 0}
+--- !u!108 &261349356
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261349354}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2.57
+  m_Range: 10
+  m_SpotAngle: 83.2
+  m_InnerSpotAngle: 14.1
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &272999697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5389,6 +5575,99 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417145576}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &417465766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417465767}
+  - component: {fileID: 417465768}
+  m_Layer: 0
+  m_Name: light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &417465767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417465766}
+  m_LocalRotation: {x: -0.34709927, y: 0, z: 0, w: 0.9378284}
+  m_LocalPosition: {x: 0, y: -1.3, z: -0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1808881225}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -40.62, y: 0, z: 0}
+--- !u!108 &417465768
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417465766}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2.57
+  m_Range: 10
+  m_SpotAngle: 63.2
+  m_InnerSpotAngle: 14.1
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &417492925
 GameObject:
   m_ObjectHideFlags: 0
@@ -6368,6 +6647,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 449564, guid: c8b19df230669df4eb91d90849f0c80a, type: 3}
   m_PrefabInstance: {fileID: 2108146756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &487080273 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4600447003281796589, guid: 2785dc84222ac49b0b1c5083240e24b5, type: 3}
+  m_PrefabInstance: {fileID: 362163517}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &505666284
 PrefabInstance:
@@ -17241,6 +17525,99 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016324899}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1026033170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1026033171}
+  - component: {fileID: 1026033172}
+  m_Layer: 0
+  m_Name: light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1026033171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026033170}
+  m_LocalRotation: {x: -0.34709927, y: -0, z: -0, w: 0.9378284}
+  m_LocalPosition: {x: 0, y: 1.3300002, z: -0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 487080273}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -40.62, y: 0, z: 0}
+--- !u!108 &1026033172
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026033170}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2.57
+  m_Range: 10
+  m_SpotAngle: 63.2
+  m_InnerSpotAngle: 14.1
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &1030372977
 GameObject:
   m_ObjectHideFlags: 0
@@ -23280,6 +23657,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 712987590554321607, guid: e829962a8ee6402429360d58957fe475, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654469900214543859, guid: e829962a8ee6402429360d58957fe475, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.489
+      objectReference: {fileID: 0}
     - target: {fileID: 4654469901032733304, guid: e829962a8ee6402429360d58957fe475, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -23755,6 +24140,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 481908, guid: dee3db12ee2f57c41af34c16d2fde197, type: 3}
   m_PrefabInstance: {fileID: 1632505839}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1633645171 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5945884333560041590, guid: a87841b2a41784decb39a0bd51d220df, type: 3}
+  m_PrefabInstance: {fileID: 1772139733}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1634912462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24055,6 +24445,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8484426735953121136, guid: f26fdd3a6ffca7c42859493a30a8b5ef, type: 3}
   m_PrefabInstance: {fileID: 1648264317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1655703481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 712987590554321607, guid: e829962a8ee6402429360d58957fe475, type: 3}
+  m_PrefabInstance: {fileID: 1597039854}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1655777775
 PrefabInstance:
@@ -26145,6 +26540,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796653991}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1808881225 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4654469900214543859, guid: e829962a8ee6402429360d58957fe475, type: 3}
+  m_PrefabInstance: {fileID: 1597039854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1809138616 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2393946, guid: ad8fe0235a8670d4c83f451033ac0a20, type: 3}
@@ -26491,9 +26891,39 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1038180583, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_text
+      value: 'Once the player reaches the checkpoint, he can choose between digging
+        deeper in the dungeons or to grab his loot and flee back to safety in the
+        village.
+
+        If he chooses the latter than the dungeons will demand
+        an offering and player''s profit will be slightly cut down.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038180583, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSize
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038180583, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 1040289044, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422406758, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_text
+      value: The NFTS will be minted <u>ONLY</u> when identified by a specific NPC
+        or by using a special item, in both cases you will need to pay a fee in Tokens.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422406758, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSize
+      value: 26.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422406758, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 26.4
       objectReference: {fileID: 0}
     - target: {fileID: 1500235807, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -26533,7 +26963,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1667451323, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
       propertyPath: m_text
-      value: 'Uccidendo i nemici potrai raccogliere un item tra:'
+      value: 'You are about to encounter your first enemy. By killing it you will
+        drop either a Token or an NFT.
+
+        NFTs could be many things like armor,
+        weapons, consumbles etc. etc.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667451323, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSize
+      value: 22.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667451323, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667451323, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1667668880, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -26606,6 +27052,29 @@ PrefabInstance:
     - target: {fileID: 1775573743, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -62.46292
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779159363, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_text
+      value: 'AlgoRogue is a 3D Roguelite sidescroller game sets in a Dark Fantasy
+        world.
+
+        This is a high risk high reward play to earn game, but for
+        now you will experience just a showcase of the basic game mechanics, in the
+        near future it will have much more layers of complexity and features, such
+        as : several playable characters,e income by lending NFTs or staking tokens,
+        crafting etc. etc.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779159363, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSize
+      value: 25.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779159363, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779159363, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1796074383, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -26686,6 +27155,24 @@ PrefabInstance:
     - target: {fileID: 1906164797, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
       propertyPath: listenForTheseEvents.Array.data[1].Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125631619, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_text
+      value: 'If the player manage to complete the dungeon, it will be awarded with
+        many many treasures and he will not pay any fee, on the contrary if he dies
+        trying his loot will be lost and his equipment damaged.
+
+        But don''t
+        worry, the equipment will be sent back to the village, where ther will be
+        your legacy waiting to succeed where the others have failed.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125631619, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSize
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125631619, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 2023446143356617034, guid: fffd374eb2c550c44b66f156e727917e, type: 3}
       propertyPath: m_Pivot.x
