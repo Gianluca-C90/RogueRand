@@ -8,6 +8,7 @@ public class HarvestButton : MonoBehaviour
 
     public void Harvest()
     {
+
         List<InventorySlot> slots = inventory.GetInventorySlots();
 
         List<ulong> ids = new List<ulong>();
@@ -18,7 +19,11 @@ public class HarvestButton : MonoBehaviour
             ids.Add(slot.item.id);
             amounts.Add(Convert.ToUInt64(slot.amount));
         }
+#if !UNITY_EDITOR
 
         AlgoServer.instance.HarvestASA(ids, amounts);
+#else
+        Debug.Log("HarvestClicked");
+#endif
     }
 }

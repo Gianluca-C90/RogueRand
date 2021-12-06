@@ -9,8 +9,12 @@ public class AlphaLerp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        canvas.alpha = Mathf.Lerp(0, 1, t);
+        if (canvas.alpha < 1)
+        {
+            canvas.alpha = Mathf.Lerp(0, 1, t);
 
-        t += 0.5f * Time.deltaTime;
+            t += 0.5f * Time.deltaTime;
+        }
+
     }
 }
