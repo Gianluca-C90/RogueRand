@@ -42,87 +42,90 @@ public class CharacterMovementController : MonoBehaviour
 
     void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-
-        #region MOUSE AIMING
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mouseAimMask))
+        if (Time.timeScale == 1)
         {
-            targetTransform.position = hit.point;
+            xInput = Input.GetAxisRaw("Horizontal");
+
+            #region MOUSE AIMING
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mouseAimMask))
+            {
+                targetTransform.position = hit.point;
+            }
+            #endregion
+
+            #region GRAVITY & JUMP LOGIC
+            isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
+
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+                animator.SetBool("isJumping", true);
+                isFalling = true;
+            }
+
+            // Apply gravity
+            velocity.y += gravity * Time.fixedDeltaTime;
+            characterController.Move(velocity * Time.deltaTime);
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2;
+            }
+            #endregion
+
+            #region FACING DIRECTION
+            // Character Facing Direction of Mouse Logic
+            Quaternion rotateTo = Quaternion.Euler(new Vector3(0, 90 * Mathf.Sign(targetTransform.position.x - transform.position.x), 0));
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotateTo, 10 * Time.deltaTime);
+
+            animator.SetFloat("multiplier", (FacingSide * xInput));
+
+            #endregion
+
+            #region ANIMATIONS
+            //Walking & Runnning Animation Logic
+            if (xInput != 0 && !Input.GetButton("Fire3"))
+            {
+                speed = walkingSpeed;
+                ChangeTag("Player");
+            }
+            else if (xInput != 0 && Input.GetButton("Fire3"))
+            {
+                speed = runningSpeed;
+                ChangeTag("Player");
+            } else
+            {
+                animator.SetFloat("multiplier", 1);
+                ChangeTag("Player");
+                speed = 0;
+            }
+
+            // Jumping Animation Logic
+            if (isFalling && isGrounded)
+            {
+                animator.SetBool("isGrounded", true);
+                isFalling = false;
+            }
+
+            // Attack Animation Logic
+            if(Input.GetButtonDown("Fire1"))
+            {
+                
+                animator.SetTrigger("BasicAttack");
+                heroWeaponCollider.enabled = true;
+                ChangeTag("Player");
+            }
+            // Blocking Animation Logic
+            else if (Input.GetButton("Fire2"))
+            {
+                animator.SetTrigger("isBlocking");
+                ChangeTag("ShieldedPlayer");
+            }
+
+            animator.SetFloat("speed", speed);
         }
-        #endregion
-
-        #region GRAVITY & JUMP LOGIC
-        isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-            animator.SetBool("isJumping", true);
-            isFalling = true;
-        }
-
-        // Apply gravity
-        velocity.y += gravity * Time.fixedDeltaTime;
-        characterController.Move(velocity * Time.deltaTime);
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2;
-        }
-        #endregion
-
-        #region FACING DIRECTION
-        // Character Facing Direction of Mouse Logic
-        Quaternion rotateTo = Quaternion.Euler(new Vector3(0, 90 * Mathf.Sign(targetTransform.position.x - transform.position.x), 0));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotateTo, 10 * Time.deltaTime);
-
-        animator.SetFloat("multiplier", (FacingSide * xInput));
-
-        #endregion
-
-        #region ANIMATIONS
-        //Walking & Runnning Animation Logic
-        if (xInput != 0 && !Input.GetButton("Fire3"))
-        {
-            speed = walkingSpeed;
-            ChangeTag("Player");
-        }
-        else if (xInput != 0 && Input.GetButton("Fire3"))
-        {
-            speed = runningSpeed;
-            ChangeTag("Player");
-        } else
-        {
-            animator.SetFloat("multiplier", 1);
-            ChangeTag("Player");
-            speed = 0;
-        }
-
-        // Jumping Animation Logic
-        if (isFalling && isGrounded)
-        {
-            animator.SetBool("isGrounded", true);
-            isFalling = false;
-        }
-
-        // Attack Animation Logic
-        if(Input.GetButtonDown("Fire1"))
-        {
-            
-            animator.SetTrigger("BasicAttack");
-            heroWeaponCollider.enabled = true;
-            ChangeTag("Player");
-        }
-        // Blocking Animation Logic
-        else if (Input.GetButton("Fire2"))
-        {
-            animator.SetTrigger("isBlocking");
-            ChangeTag("ShieldedPlayer");
-        }
-
-        animator.SetFloat("speed", speed);
         
 
         #endregion

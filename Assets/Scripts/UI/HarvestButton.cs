@@ -18,6 +18,8 @@ public class HarvestButton : MonoBehaviour
         {
             ids.Add(slot.item.id);
             amounts.Add(Convert.ToUInt64(slot.amount));
+            Debug.Log($"id: {slot.item.id} amount: {slot.amount}");
+
         }
 #if !UNITY_EDITOR
 
@@ -25,5 +27,10 @@ public class HarvestButton : MonoBehaviour
 #else
         Debug.Log("HarvestClicked");
 #endif
+    }
+    
+    private void OnDestroy() 
+    {
+        inventory.Clear();
     }
 }

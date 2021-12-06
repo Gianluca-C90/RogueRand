@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Stone_Rough
   m_Shader: {fileID: 4800000, guid: da2c2ea6d42ed1f46bb48297767250f0, type: 3}
   m_ShaderKeywords: _NORMALMAP
@@ -91,7 +92,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Roughness: 0.35
+    - _Roughness: 0.715
     - _Smooth: 0.511
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -104,3 +105,4 @@ Material:
     m_Colors:
     - _Color: {r: 0, g: 0.751724, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

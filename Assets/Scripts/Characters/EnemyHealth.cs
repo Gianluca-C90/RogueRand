@@ -38,6 +38,7 @@ public class EnemyHealth : MonoBehaviour
         rigid.isKinematic = true;
         Destroy(agent, 1);
         droppables.DropRandomReward(transform.position);
+
         Destroy(gameObject, 10);
     }
 }

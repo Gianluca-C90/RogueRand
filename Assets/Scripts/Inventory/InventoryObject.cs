@@ -35,14 +35,12 @@ public class InventoryObject : ScriptableObject
 
     public List<InventorySlot> GetInventorySlots()
     {
-        List<InventorySlot> slots = new List<InventorySlot>();
+        return container;
+    }
 
-        foreach (var slot in container)
-        {
-            slots.Add(slot);
-        }
-
-        return slots;
+    public void Clear()
+    {
+        container.Clear();
     }
 }
 

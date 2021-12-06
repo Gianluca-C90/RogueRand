@@ -7,6 +7,7 @@ public class WInPortalCollider : MonoBehaviour
     [SerializeField] GameEvent evento;
     private void OnTriggerEnter(Collider other)
     {
+        CaptionsManager.ActivateCaption();
         evento.Raise();
     }
 }

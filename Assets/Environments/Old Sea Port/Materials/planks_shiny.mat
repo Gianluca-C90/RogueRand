@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: planks_shiny
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
@@ -66,7 +67,7 @@ Material:
     - _EdgeLength: 50
     - _EmissionScaleUI: 0
     - _Fresnel: 3
-    - _GlossMapScale: 1
+    - _GlossMapScale: 0.91
     - _Glossiness: 0.449
     - _GlossyReflections: 1
     - _Metallic: 0
@@ -86,3 +87,4 @@ Material:
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.09411765, g: 0.09803922, b: 0.101960786, a: 0}
     - _SpecColor: {r: 0.13235295, g: 0.13235295, b: 0.13235295, a: 1}
+  m_BuildTextureStacks: []
