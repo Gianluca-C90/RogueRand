@@ -109,12 +109,17 @@ public class AlgoServer : MonoBehaviour
         {
             bool keep = await checkASA(ids[i]);
 
+            
+
             if (!keep)
             {
+                Debug.Log($"Asset {ids[i]} not signed, please accept");
                 Optin(type, clientAddr, ids[i].ToString(), "");
             }
             else
             {
+                Debug.Log($"Asset {ids[i]} already signed");
+
                 UniTaskVoid uniTaskVoid = SendAsset(clientAddr, ids[i], amounts[i]);
             }
         }
@@ -331,7 +336,7 @@ public class AlgoServer : MonoBehaviour
 
     public async UniTask<bool> checkASA(ulong asset_id)
     {
-        var (error, accountInfo) = await algod.GetAccountInformation("HIEF2R3JQGNPGOMMUC6ZGLYGUBXVY2KBFGF5DOLTBMXLOC2FAIAM6666FY");
+        var (error, accountInfo) = await algod.GetAccountInformation(clientAddr);
         if (error.IsError)
         {
             Debug.LogError(error.Message);
