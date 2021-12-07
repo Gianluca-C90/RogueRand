@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
         {
             death.Raise();
             Death();
-            Debug.Log(gameObject.name + " is Dead!");
+            //Debug.Log(gameObject.name + " is Dead!");
         }
     }
 

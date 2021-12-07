@@ -27,7 +27,7 @@ public class HarvestButton : MonoBehaviour
 
         AlgoServer.instance.HarvestASA(ids, amounts);
 #else
-        Debug.Log("HarvestClicked");
+        //Debug.Log("HarvestClicked");
 #endif
     }
 

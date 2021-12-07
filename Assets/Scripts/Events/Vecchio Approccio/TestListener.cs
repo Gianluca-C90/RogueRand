@@ -22,7 +22,7 @@ public class TestListener : MonoBehaviour
     /// </summary>
     void FireTestEvent()
     {
-        Debug.Log("The Event Just Fired!");
+        //Debug.Log("The Event Just Fired!");
     }
     #endregion
 }

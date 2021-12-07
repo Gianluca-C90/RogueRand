@@ -11,12 +11,12 @@ public class HeroSwordCollider : MonoBehaviour
     {
         if (collision != null)
         {
-            
+
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                weaponCollider.enabled = false; 
+                weaponCollider.enabled = false;
                 collision.GetComponent<EnemyHealth>().HealthChanges(-1);
-                Debug.Log("Enemy have been Hit!");
+                //Debug.Log("Enemy have been Hit!");
             }
         }
     }

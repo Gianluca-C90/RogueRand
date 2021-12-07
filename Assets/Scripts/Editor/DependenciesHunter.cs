@@ -27,10 +27,10 @@ namespace DependenciesHunter
         private const int PageSize = 50;
 
         private int _sortType;
-        
+
         private Vector2 _pagesScroll = Vector2.zero;
         private Vector2 _assetsScroll = Vector2.zero;
-        
+
         // ReSharper disable once StringLiteralTypo
         private readonly List<string> _defaultIgnorePatterns = new List<string>
         {
@@ -61,7 +61,7 @@ namespace DependenciesHunter
         private void PopulateUnusedAssetsList()
         {
             _pageToShow = null;
-            
+
             if (_service == null)
             {
                 _service = new ProjectAssetsAnalysisUtilities();
@@ -71,7 +71,7 @@ namespace DependenciesHunter
             {
                 _unusedAssets = new List<UnusedAssetData>();
             }
-            
+
             Clear();
             Show();
 
@@ -81,12 +81,12 @@ namespace DependenciesHunter
 
             var filteredOutput = new StringBuilder();
             filteredOutput.AppendLine("Assets ignored by pattern:");
-            
+
             var count = 0;
             foreach (var mapElement in map)
             {
                 EditorUtility.DisplayProgressBar("Unreferenced Assets", "Searching for unreferenced assets",
-                    (float) count / map.Count);
+                    (float)count / map.Count);
                 count++;
 
                 if (mapElement.Value.Count == 0)
@@ -94,9 +94,9 @@ namespace DependenciesHunter
                     var validForOutput = ProjectAssetsAnalysisUtilities.IsValidForOutput(mapElement.Key, _ignoreInOutputPatterns);
                     var validAssetType = _service.IsValidAssetType(mapElement.Key, validForOutput);
 
-                    if (!validAssetType) 
+                    if (!validAssetType)
                         continue;
-                    
+
                     if (validForOutput)
                     {
                         _unusedAssets.Add(UnusedAssetData.Create(mapElement.Key));
@@ -112,8 +112,8 @@ namespace DependenciesHunter
             SortByPath();
 
             EditorUtility.ClearProgressBar();
-            
-            Debug.Log(filteredOutput.ToString());
+
+            //Debug.Log(filteredOutput.ToString());
             filteredOutput.Clear();
         }
 
@@ -128,34 +128,34 @@ namespace DependenciesHunter
             GUIUtilities.HorizontalLine();
 
             EditorGUILayout.BeginHorizontal();
-            
+
             GUILayout.FlexibleSpace();
-            
+
             var prevColor = GUI.color;
             GUI.color = Color.green;
-            
+
             if (GUILayout.Button("Run Analysis", GUILayout.Width(300f)))
             {
                 PopulateUnusedAssetsList();
             }
-            
+
             GUI.color = prevColor;
-            
+
             GUILayout.FlexibleSpace();
-            
+
             EditorGUILayout.EndHorizontal();
-            
+
             GUIUtilities.HorizontalLine();
-            
+
             OnPatternsGUI();
-            
+
             GUIUtilities.HorizontalLine();
 
             if (_unusedAssets == null)
             {
                 return;
             }
-            
+
             if (_unusedAssets.Count == 0)
             {
                 EditorGUILayout.LabelField("No unreferenced found");
@@ -163,11 +163,11 @@ namespace DependenciesHunter
             }
 
             EditorGUILayout.LabelField($"Unreferenced Assets: {_unusedAssets.Count}");
-                
+
             _pagesScroll = EditorGUILayout.BeginScrollView(_pagesScroll);
 
             EditorGUILayout.BeginHorizontal();
-            
+
             prevColor = GUI.color;
             GUI.color = !_pageToShow.HasValue ? Color.yellow : Color.white;
 
@@ -196,11 +196,11 @@ namespace DependenciesHunter
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndScrollView();
-            
+
             GUIUtilities.HorizontalLine();
-        
+
             EditorGUILayout.BeginHorizontal();
-            
+
             prevColor = GUI.color;
 
             GUI.color = _sortType == 0 || _sortType == 1 ? Color.yellow : Color.white;
@@ -208,25 +208,25 @@ namespace DependenciesHunter
             {
                 SortByType();
             }
-        
+
             GUI.color = _sortType == 2 || _sortType == 3 ? Color.yellow : Color.white;
             if (GUILayout.Button("Sort by path", GUILayout.Width(100f)))
             {
                 SortByPath();
             }
-            
+
             GUI.color = _sortType == 4 || _sortType == 5 ? Color.yellow : Color.white;
             if (GUILayout.Button("Sort by size", GUILayout.Width(100f)))
             {
                 SortBySize();
             }
-            
+
             GUI.color = prevColor;
 
             EditorGUILayout.EndHorizontal();
 
             GUIUtilities.HorizontalLine();
-            
+
             _assetsScroll = GUILayout.BeginScrollView(_assetsScroll);
 
             EditorGUILayout.BeginVertical();
@@ -241,15 +241,15 @@ namespace DependenciesHunter
                         continue;
                     }
                 }
-                
+
                 var unusedAsset = _unusedAssets[i];
                 EditorGUILayout.BeginHorizontal();
-                
+
                 EditorGUILayout.LabelField(i.ToString(), GUILayout.Width(40f));
-                
+
                 prevColor = GUI.color;
                 GUI.color = unusedAsset.ValidType ? Color.white : Color.red;
-                EditorGUILayout.LabelField(unusedAsset.TypeName, GUILayout.Width(150f));    
+                EditorGUILayout.LabelField(unusedAsset.TypeName, GUILayout.Width(150f));
                 GUI.color = prevColor;
 
                 if (unusedAsset.ValidType)
@@ -268,15 +268,15 @@ namespace DependenciesHunter
                     GUI.skin.button.alignment = alignment;
                 }
 
-                EditorGUILayout.LabelField(unusedAsset.ReadableSize, GUILayout.Width(70f));    
-                
+                EditorGUILayout.LabelField(unusedAsset.ReadableSize, GUILayout.Width(70f));
+
                 EditorGUILayout.LabelField(unusedAsset.Path);
 
                 EditorGUILayout.EndHorizontal();
             }
 
             GUILayout.FlexibleSpace();
-            
+
             EditorGUILayout.EndVertical();
             GUILayout.EndScrollView();
         }
@@ -284,7 +284,7 @@ namespace DependenciesHunter
         private void OnPatternsGUI()
         {
             EnsurePatternsLoaded();
-            
+
             _ignorePatternsFoldout = EditorGUILayout.Foldout(_ignorePatternsFoldout,
                 $"Patterns Ignored in Output: {_ignoreInOutputPatterns.Count}");
 
@@ -302,12 +302,12 @@ namespace DependenciesHunter
 
             if (GUILayout.Button("Save to Clipboard"))
             {
-                var contents = _ignoreInOutputPatterns.Aggregate("Patterns:", 
+                var contents = _ignoreInOutputPatterns.Aggregate("Patterns:",
                     (current, t) => current + "\n" + t);
 
                 EditorGUIUtility.systemCopyBuffer = contents;
             }
-            
+
             EditorGUILayout.EndHorizontal();
 
             var newCount = Mathf.Max(0, EditorGUILayout.IntField("Count:", _ignoreInOutputPatterns.Count));
@@ -352,7 +352,7 @@ namespace DependenciesHunter
             {
                 return;
             }
-            
+
             var count = EditorPrefs.GetInt(PATTERNS_PREFS_KEY, -1);
 
             if (count == -1)
@@ -362,11 +362,11 @@ namespace DependenciesHunter
             else
             {
                 _ignoreInOutputPatterns = new List<string>();
-                
+
                 for (var i = 0; i < count; i++)
                 {
                     _ignoreInOutputPatterns.Add(EditorPrefs.GetString($"{PATTERNS_PREFS_KEY}_{i}"));
-                }    
+                }
             }
         }
 
@@ -379,7 +379,7 @@ namespace DependenciesHunter
                 EditorPrefs.SetString($"{PATTERNS_PREFS_KEY}_{i}", _ignoreInOutputPatterns[i]);
             }
         }
-        
+
         private void SortByType()
         {
             if (_sortType == 0)
@@ -395,7 +395,7 @@ namespace DependenciesHunter
                     string.Compare(a.TypeName, b.TypeName, StringComparison.Ordinal));
             }
         }
-        
+
         private void SortByPath()
         {
             if (_sortType == 2)
@@ -521,7 +521,7 @@ namespace DependenciesHunter
             for (var i = 0; i < _selectedObjectsFoldouts.Length; i++)
             {
                 GUIUtilities.HorizontalLine();
-                
+
                 GUILayout.BeginHorizontal();
 
                 var dependencies = results[_selectedObjects[i]];
@@ -553,7 +553,7 @@ namespace DependenciesHunter
 
                         if (GUILayout.Button(guiContent, GUILayout.MinWidth(300f), GUILayout.Height(18f)))
                         {
-                            Selection.objects = new[] {AssetDatabase.LoadMainAssetAtPath(resultPath)};
+                            Selection.objects = new[] { AssetDatabase.LoadMainAssetAtPath(resultPath) };
                         }
 
                         GUI.skin.button.alignment = alignment;
@@ -590,10 +590,10 @@ namespace DependenciesHunter
             if (type == null)
             {
                 if (validForOutput)
-                    Debug.LogWarning($"Invalid asset type found at {path}");
-                return false;
+                    //Debug.LogWarning($"Invalid asset type found at {path}");
+                    return false;
             }
-            
+
             if (type == typeof(MonoScript) || type == typeof(DefaultAsset))
             {
                 return false;
@@ -611,10 +611,10 @@ namespace DependenciesHunter
 
             return type != typeof(Texture2D) || !UsedAsProjectIcon(path);
         }
-        
+
         public static bool IsValidForOutput(string path, List<string> ignoreInOutputPatterns)
         {
-            return ignoreInOutputPatterns.All(pattern 
+            return ignoreInOutputPatterns.All(pattern
                 => string.IsNullOrEmpty(pattern) || !Regex.Match(path, pattern).Success);
         }
 
@@ -637,7 +637,7 @@ namespace DependenciesHunter
 
             foreach (var targetGroup in targetGroups)
             {
-                icons.AddRange(PlayerSettings.GetIconsForTargetGroup((BuildTargetGroup) targetGroup));
+                icons.AddRange(PlayerSettings.GetIconsForTargetGroup((BuildTargetGroup)targetGroup));
             }
 
             foreach (var icon in icons)
@@ -655,7 +655,7 @@ namespace DependenciesHunter
         {
             if (selectedObjects == null)
             {
-                Debug.Log("No selected objects passed");
+                //Debug.Log("No selected objects passed");
                 return new Dictionary<Object, List<string>>();
             }
 
@@ -686,8 +686,8 @@ namespace DependenciesHunter
                 }
                 else
                 {
-                    Debug.LogWarning("Dependencies Hunter doesn't contain the specified object in the assets map",
-                        selectedObject);
+                    //Debug.LogWarning("Dependencies Hunter doesn't contain the specified object in the assets map",
+                    //selectedObject);
                     results.Add(selectedObject, new List<string>());
                 }
             }
@@ -702,12 +702,12 @@ namespace DependenciesHunter
 
             reverseDependencies = assetPaths.ToDictionary(assetPath => assetPath, assetPath => new List<string>());
 
-            Debug.Log($"Total Assets Count: {assetPaths.Count}");
+            //Debug.Log($"Total Assets Count: {assetPaths.Count}");
 
             for (var i = 0; i < assetPaths.Count; i++)
             {
                 EditorUtility.DisplayProgressBar("Dependencies Hunter", "Creating a map of dependencies",
-                    (float) i / assetPaths.Count);
+                    (float)i / assetPaths.Count);
 
                 var assetDependencies = AssetDatabase.GetDependencies(assetPaths[i], false);
 
@@ -728,7 +728,7 @@ namespace DependenciesHunter
         {
             var type = AssetDatabase.GetMainAssetTypeAtPath(path);
             string typeName;
-            
+
             if (type != null)
             {
                 typeName = type.ToString();
@@ -744,7 +744,7 @@ namespace DependenciesHunter
             var bytesSize = fileInfo.Length;
             return new UnusedAssetData(path, type, typeName, bytesSize, CommonUtilities.GetReadableSize(bytesSize));
         }
-        
+
         private UnusedAssetData(string path, Type type, string typeName, long bytesSize, string readableSize)
         {
             Path = path;
@@ -799,10 +799,10 @@ namespace DependenciesHunter
             string[] sizes = { "B", "KB", "MB", "GB", "TB" };
             double len = bytesSize;
             var order = 0;
-            while (len >= 1024 && order < sizes.Length - 1) 
+            while (len >= 1024 && order < sizes.Length - 1)
             {
                 order++;
-                len = len/1024;
+                len = len / 1024;
             }
 
             return $"{len:0.##} {sizes[order]}";

@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0 && !isDead)
         {
             Death();
-            Debug.Log(gameObject.name + " is Dead!");
+            //Debug.Log(gameObject.name + " is Dead!");
         }
     }
 

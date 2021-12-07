@@ -85,7 +85,7 @@ public class AlgoServer : MonoBehaviour
         ConnectAlgoSign();
         type = WalletType.ALGOSIGNER;
         connected = true;
-        //Debug.Log(type + " " + connected);
+        Debug.Log(type + " " + connected);
     }
 
     public void GetConnMyAlgo()
@@ -93,7 +93,7 @@ public class AlgoServer : MonoBehaviour
         ConnectMyAlgo();
         type = WalletType.MYALGOWALLET;
         connected = true;
-        //Debug.Log(type + " " + connected);
+        Debug.Log(type + " " + connected);
 
     }
 

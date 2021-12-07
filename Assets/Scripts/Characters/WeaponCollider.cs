@@ -16,11 +16,11 @@ public class WeaponCollider : MonoBehaviour
                 //Raise evento che ha colpito character
                 atkLanded.Raise();
                 weaponCollider.enabled = false;
-                Debug.Log("You've been Hit!");
+                //Debug.Log("You've been Hit!");
             }
             else if (collision.gameObject.CompareTag("ShieldedPlayer"))
             {
-                Debug.Log("Attack Blocked!");
+                //Debug.Log("Attack Blocked!");
             }
         }
     }
