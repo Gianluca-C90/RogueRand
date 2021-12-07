@@ -67,7 +67,7 @@ public class CharacterMovementController : MonoBehaviour
             }
 
             // Apply gravity
-            velocity.y += gravity * Time.fixedDeltaTime;
+            velocity.y += gravity * Time.deltaTime;
             characterController.Move(velocity * Time.deltaTime);
             if (isGrounded && velocity.y < 0)
             {

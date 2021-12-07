@@ -4640,6 +4640,10 @@ PrefabInstance:
       value: Sword And Shield Idle (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8896145942710930977, guid: cf01e98c29f68d448991a9af822a16d9, type: 3}
+      propertyPath: jumpHeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896145942710930977, guid: cf01e98c29f68d448991a9af822a16d9, type: 3}
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 1308290835}
