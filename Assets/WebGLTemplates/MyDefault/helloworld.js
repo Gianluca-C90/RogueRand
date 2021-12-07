@@ -14,6 +14,7 @@ async function connectToMyAlgo() {
         let rec = addresses.toString();
         console.log(rec);
         unityInstance.SendMessage('Communication', 'GetAddr', rec);
+        window.alert("ARE YOU READY TO DIE?");
     } catch (err) {
         console.error(err);
     }
@@ -134,6 +135,8 @@ async function connectToAlgoSigner()
             })
             .then(() => {
                 console.log("Healthy");
+                window.alert("ARE YOU READY TO DIE?");
+
             })
             .catch((e) => {
                 // handle errors and perform error cleanup here

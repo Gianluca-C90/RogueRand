@@ -5,9 +5,11 @@ using UnityEngine;
 public class HarvestButton : MonoBehaviour
 {
     public InventoryObject inventory;
+    public GameObject loading;
 
     public void Harvest()
     {
+        loading.SetActive(true);
 
         List<InventorySlot> slots = inventory.GetInventorySlots();
 
@@ -28,8 +30,8 @@ public class HarvestButton : MonoBehaviour
         Debug.Log("HarvestClicked");
 #endif
     }
-    
-    private void OnDestroy() 
+
+    private void OnDestroy()
     {
         inventory.Clear();
     }
