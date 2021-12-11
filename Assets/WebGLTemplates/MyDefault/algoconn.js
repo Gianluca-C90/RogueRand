@@ -11,7 +11,7 @@ async function connectToMyAlgo() {
         const myAlgoWallet = new MyAlgoConnect();
         const accounts = await myAlgoWallet.connect();
         const addresses = accounts.map(account => account.address);
-        let rec = addresses.toString();
+        const rec = addresses.toString();
         console.log(rec);
         unityInstance.SendMessage('Communication', 'GetAddr', rec);
         window.alert("ARE YOU READY TO DIE?");
@@ -20,8 +20,12 @@ async function connectToMyAlgo() {
     }
 }
 
-async function makeTxn_MyA(sender, receiver, amount, note)
+async function makeTxn_MyA(sender, receiver, am, nt)
 {
+    const from = sender; 
+    const to = receiver; 
+    const amount = am; 
+    const note = nt; 
 
     try {
         const algodClient = new algosdk.Algodv2("", 'https://api.testnet.algoexplorer.io', '');
@@ -31,8 +35,8 @@ async function makeTxn_MyA(sender, receiver, amount, note)
 
         const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
             suggestedParams: params,
-            from: sender,
-            to: receiver, 
+            from: from,
+            to: to, 
             amount: amount,
             note: note
         });
@@ -50,16 +54,21 @@ async function makeTxn_MyA(sender, receiver, amount, note)
     }
 }
 
-async function optinASA_MyA(asaID, sender, note)
+async function optinASA_MyA(asaID, receiver, am, nt)
 {
+    const assetId = asaID;
+    const amount = am;
+    const optInAccount = receiver; 
+    const note = nt;
+
     try {
         const algodClient = new algosdk.Algodv2("", 'https://api.testnet.algoexplorer.io', '');
         const params = await algodClient.getTransactionParams().do();
 
         const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
-            from: sender,
-            to: sender,
-            assetIndex: +asaID,
+            from: optInAccount,
+            to: optInAccount,
+            assetIndex: +assetId,
             amount: 0,
             suggestedParams: {...params}
           });
@@ -69,7 +78,7 @@ async function optinASA_MyA(asaID, sender, note)
 
         const response = await algodClient.sendRawTransaction(signedTxn.blob).do();
 
-        unityInstance.SendMessage('Communication', 'SendASA');
+        unityInstance.SendMessage('Communication', 'SendASA', assetId + ' ' + amount);
 
     } catch (error) {
         console.error(err);
@@ -147,10 +156,10 @@ async function connectToAlgoSigner()
 
 async function makeTxn_AS(sender, receiver, am, nt)
 {
-    let from = sender; 
-    let to = receiver; 
-    let amount = am; 
-    let note = nt; 
+    const from = sender; 
+    const to = receiver; 
+    const amount = am; 
+    const note = nt; 
 
     AlgoSigner.connect()
         .then(() => algodClient.getTransactionParams().do())
@@ -179,13 +188,12 @@ async function makeTxn_AS(sender, receiver, am, nt)
         });
 }
 
-async function optinASA_AS(asaID, receiver, nt)
+async function optinASA_AS(asaID, receiver, am, nt)
 {
-    let assetId = asaID;
-    let optInAccount = receiver; 
-    let note = nt; 
-
-    
+    const assetId = asaID;
+    const amount = am;
+    const optInAccount = receiver; 
+    const note = nt;
 
     AlgoSigner.connect()
         .then(() => algodClient.getTransactionParams().do())
@@ -209,8 +217,8 @@ async function optinASA_AS(asaID, receiver, nt)
               }))
             .then((tx) => waitForAlgosignerConfirmation(tx)) 
             .then(() => {
-                // our transaction was successful, we can now view it on the blockchain 
-                unityInstance.SendMessage('Communication', 'SendASA');
+                // our transaction was successful, we can now view it on the blockchain
+                unityInstance.SendMessage('Communication', 'SendASA', assetId + ' ' + amount);
             })
         })
         .catch((e) => 
@@ -223,11 +231,11 @@ async function optinASA_AS(asaID, receiver, nt)
 /*
 async function sendASA_AS(asaID, sender, receiver, am, nt)
 {
-    let assetId = asaID;
-    let from = sender; 
-    let to = receiver; 
-    let amount = am; 
-    let note = nt; 
+    const assetId = asaID;
+    const from = sender; 
+    const to = receiver; 
+    const amount = am; 
+    const note = nt; 
 
     AlgoSigner.connect()
         .then(() => algodClient.getTransactionParams().do())

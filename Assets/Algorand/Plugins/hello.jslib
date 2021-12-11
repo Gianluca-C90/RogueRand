@@ -33,19 +33,20 @@ var myLibrary = {
         };
     },
 
-    Optin: function(type, sender, asa, note)
+    Optin: function(type, sender, asa, am, note)
     {
         var s = Pointer_stringify(sender);
         var a = Pointer_stringify(asa);
         var n = Pointer_stringify(note);
+        var m = Pointer_stringify(am);
 
         switch(type)
         {
             case 0:
-                optinASA_MyA(a, s, n);
+                optinASA_MyA(a, s, m, n);
                 break;
             case 1:
-                optinASA_AS(a, s, n);
+                optinASA_AS(a, s, m, n);
                 break;
             case 2:
                 //TODO: Aggiungere AlgoWalletOfficial

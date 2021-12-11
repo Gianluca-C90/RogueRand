@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// Enum to manage different wallet types
@@ -33,7 +34,7 @@ public class AlgoServer : MonoBehaviour
     private static extern void Tsx(WalletType type, string sender, string receiver, float amount, string note);
 
     [DllImport("__Internal")]
-    private static extern void Optin(WalletType type, string sender, string asa, string note);
+    private static extern void Optin(WalletType type, string sender, string asa, string am, string note);
 
     [DllImport("__Internal")]
     private static extern void AsaTxn(WalletType type, string sender, string receiver, string asa, float amount, string note);
@@ -44,7 +45,10 @@ public class AlgoServer : MonoBehaviour
     string clientAddr;
     WalletType type;
     bool holdASA;
-    const ulong TOKENID = 47482804;
+    //const ulong TOKENID = 47482804;
+    private List<ulong> ids;
+    private List<ulong> amounts;
+
 
     public bool connected;
 
@@ -71,14 +75,14 @@ public class AlgoServer : MonoBehaviour
         CheckBalance().Forget();
     }
 
-    public void Update()
+    /*public void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.O))
         {
             HarvestASA(new List<ulong> { TOKENID }, new List<ulong> { 1 });
         }
-    }
+    }*/
 
     public void GetConnAlgoSign()
     {
@@ -109,12 +113,13 @@ public class AlgoServer : MonoBehaviour
         {
             bool keep = await checkASA(ids[i]);
 
-            
-
             if (!keep)
             {
                 Debug.Log($"Asset {ids[i]} not signed, please accept");
-                Optin(type, clientAddr, ids[i].ToString(), "");
+                this.ids = ids;
+                this.amounts = amounts;
+                Optin(type, clientAddr, ids[i].ToString(), amounts[i].ToString(), "");
+
             }
             else
             {
@@ -123,13 +128,14 @@ public class AlgoServer : MonoBehaviour
                 UniTaskVoid uniTaskVoid = SendAsset(clientAddr, ids[i], amounts[i]);
             }
         }
-
-
     }
 
-    public void SendASA()
+    public void SendASA(string info)
     {
-        UniTaskVoid uniTaskVoid = SendAsset(clientAddr, TOKENID, 1);
+        var infos = info.Split(' ');
+        var id = Convert.ToUInt64(infos[0]);
+        var am = Convert.ToUInt64(infos[1]);
+        UniTaskVoid uniTaskVoid = SendAsset(clientAddr, id, am);
     }
 
     private async UniTaskVoid MakePayment(Address receiver, ulong amount)
