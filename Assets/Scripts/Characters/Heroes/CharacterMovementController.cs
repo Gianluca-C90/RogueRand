@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterMovementController : MonoBehaviour
 {
@@ -18,12 +19,13 @@ public class CharacterMovementController : MonoBehaviour
     [SerializeField] float jumpHeight = 3;
 
     Camera mainCamera;
-    float xInput;
+    Vector2 input;
     float speed = 0;
     Vector3 velocity;
     bool isGrounded;
     bool isFalling;
 
+    PlayerInput playerInput;
 
     int FacingSide 
     {
@@ -34,17 +36,27 @@ public class CharacterMovementController : MonoBehaviour
             return dir > 0f ? -1 : dir < 0 ? 1 : 0;
         }
     }
+    private void Awake()
+    {
+        playerInput = new PlayerInput();
+    }
 
     void Start()
     {
         mainCamera = Camera.main;
+        playerInput.InputHandler.Attack.performed += context => Attack();playerInput.InputHandler.Attack.performed += context => Attack();
+        playerInput.InputHandler.Block.started += context => Block(true);
+        playerInput.InputHandler.Block.canceled += context => Block(false);
+        playerInput.InputHandler.Jump.performed += context => Jump();
     }
 
     void Update()
     {
         if (Time.timeScale == 1)
         {
-            xInput = Input.GetAxisRaw("Horizontal");
+            input = playerInput.InputHandler.Movement.ReadValue<Vector2>();
+            Move();
+            isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
 
             #region MOUSE AIMING
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -56,18 +68,10 @@ public class CharacterMovementController : MonoBehaviour
             }
             #endregion
 
-            #region GRAVITY & JUMP LOGIC
-            isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
-
-            if (Input.GetButtonDown("Jump") && isGrounded)
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-                animator.SetBool("isJumping", true);
-                isFalling = true;
-            }
+            #region GRAVITY
 
             // Apply gravity
-            velocity.y += gravity * Time.deltaTime;
+            velocity.y += gravity * 2 *  Time.deltaTime;
             characterController.Move(velocity * Time.deltaTime);
             if (isGrounded && velocity.y < 0)
             {
@@ -80,76 +84,86 @@ public class CharacterMovementController : MonoBehaviour
             Quaternion rotateTo = Quaternion.Euler(new Vector3(0, 90 * Mathf.Sign(targetTransform.position.x - transform.position.x), 0));
             transform.rotation = Quaternion.Lerp(transform.rotation, rotateTo, 10 * Time.deltaTime);
 
-            animator.SetFloat("multiplier", (FacingSide * xInput));
+            animator.SetFloat("multiplier", (FacingSide * input.x));
 
             #endregion
 
             #region ANIMATIONS
-            //Walking & Runnning Animation Logic
-            if (xInput != 0 && !Input.GetButton("Fire3"))
-            {
-                speed = walkingSpeed;
-                ChangeTag("Player");
-            }
-            else if (xInput != 0 && Input.GetButton("Fire3"))
-            {
-                speed = runningSpeed;
-                ChangeTag("Player");
-            } else
-            {
-                animator.SetFloat("multiplier", 1);
-                ChangeTag("Player");
-                speed = 0;
-            }
-
-            // Jumping Animation Logic
-            if (isFalling && isGrounded)
+            if (isGrounded)
             {
                 animator.SetBool("isGrounded", true);
                 isFalling = false;
+                //Walking & Runnning Animation Logic
+                if (input.x != 0 && !Input.GetButton("Fire3"))
+                {
+                    speed = walkingSpeed;
+                    ChangeTag("Player");
+                }
+                else if (input.x != 0 && Input.GetButton("Fire3"))
+                {
+                    speed = runningSpeed;
+                    ChangeTag("Player");
+                }
+                else
+                {
+                    animator.SetFloat("multiplier", 1);
+                    ChangeTag("Player");
+                    speed = 0;
+                }
             }
-
-            // Attack Animation Logic
-            if(Input.GetButtonDown("Fire1"))
+            // Jumping Animation Logic
+            else
             {
-                
-                animator.SetTrigger("BasicAttack");
-                heroWeaponCollider.enabled = true;
-                ChangeTag("Player");
+                animator.SetBool("isGrounded", false);
+                isFalling = true;
             }
-            // Blocking Animation Logic
-            else if (Input.GetButton("Fire2"))
-            {
-                animator.SetTrigger("isBlocking");
-                ChangeTag("ShieldedPlayer");
-            }
-
             animator.SetFloat("speed", speed);
         }
-        
-
         #endregion
     }
-
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        #region CHARACTER MOVEMENT
         // Character Movement Logic
-        Vector3 move = new Vector3(xInput, 0, 0);
-        characterController.Move( move * Time.fixedDeltaTime * speed);
+        Vector3 move = new Vector3(input.x, 0, 0);
+        characterController.Move(move * Time.fixedDeltaTime * speed);
+    }
 
-
-        // hack to alwayys evaluate the multiplying speed of the animation to 1
+    public void Move()
+    {
+        // Hack to alwayys evaluate the multiplying speed of the animation to 1
         float animationSpeedMultiplier = 1;
 
-        if (xInput < 0)
+        if (input.x < 0)
             animationSpeedMultiplier = -1;
         else
             animationSpeedMultiplier = 1;
 
         // Sets the animation parameter speed so it can make the player turn where the mouse is aiming
         animator.SetFloat("speed", animationSpeedMultiplier * FacingSide);
-        #endregion
+    }
+
+    public void Jump()
+    {
+        if (isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            animator.SetBool("isJumping", true);
+            isFalling = true;
+        }
+    }
+
+    public void Attack()
+    {
+        animator.SetTrigger("BasicAttack");
+        heroWeaponCollider.enabled = true;
+        ChangeTag("Player");
+    }
+
+    public void Block(bool state)
+    {
+        // Blocking Animation Logic
+        animator.SetBool("isBlocking", state);
+        ChangeTag("ShieldedPlayer");
     }
 
     private void OnAnimatorIK()
@@ -163,5 +177,14 @@ public class CharacterMovementController : MonoBehaviour
         gameObject.tag = tag;
     }
 
+    private void OnEnable()
+    {
+        playerInput.InputHandler.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInput.InputHandler.Disable();
+    }
+
 }
-    

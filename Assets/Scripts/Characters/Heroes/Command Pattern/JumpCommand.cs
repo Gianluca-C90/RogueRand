@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JumpCommand : Command
 {
+
     public override void Execute()
     {
         Jump();
@@ -11,6 +12,6 @@ public class JumpCommand : Command
 
     void Jump()
     {
-        // some code to jump
+
     }
 }
