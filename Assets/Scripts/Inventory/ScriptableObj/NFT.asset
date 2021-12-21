@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: NFT
   m_EditorClassIdentifier: 
   type: 1
-  prefab: {fileID: 5059498574031566881, guid: a87841b2a41784decb39a0bd51d220df, type: 3}
+  image: {fileID: -2934713942224761939, guid: e373a0b3bd94241d6896465217469be7, type: 3}
   id: 49696691
   rarity: 4

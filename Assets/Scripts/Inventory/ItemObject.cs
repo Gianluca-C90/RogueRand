@@ -12,6 +12,6 @@ public enum ItemType
 public class ItemObject : ScriptableObject
 {
     public ItemType type;
-    public GameObject prefab;
+    public Sprite image;
     public ulong id;
 }
